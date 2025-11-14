@@ -1,0 +1,18 @@
+# Pyramid data file
+# Format: apex_x apex_y apex_z base1_x base1_y base1_z base2_x base2_y base2_z base3_x base3_y base3_z base4_x base4_y base4_z
+# Valid pyramid with square base on xy-plane
+2 2 4 0 0 0 4 0 0 4 4 0 0 4 0
+# Valid unit pyramid
+0.5 0.5 1 0 0 0 1 0 0 1 1 0 0 1 0
+# Invalid: wrong symbol
+2a.0 3.0 4.1 5.0 6.0 7.0 8.0 9.0 10.0 11.0 12.0 13.0 14.0 15.0 16.0
+# Invalid: not enough data
+1.0 2.0 3.0 4.0 5.0
+# Valid pyramid with negative coordinates
+-1 -1 3 -2 -2 0 2 -2 0 2 2 0 -2 2 0
+# Valid taller pyramid
+1 1 10 0 0 0 2 0 0 2 2 0 0 2 0
+# Invalid: contains letter
+3.a5 2.0 5.0 2.0 5.0 4.0 3.5 4.0 1.0 2.0 3.0 4.0 5.0 6.0 7.0
+# Valid pyramid
+3 3 6 1 1 0 5 1 0 5 5 0 1 5 0
