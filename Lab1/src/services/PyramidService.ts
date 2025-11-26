@@ -6,7 +6,6 @@ export class PyramidService {
   public calculateSurfaceArea(pyramid: Pyramid): number {
     const baseArea = this.calculateBaseArea(pyramid);
     
-    // Calculate areas of 4 triangular faces
     const basePoints = pyramid.getBasePoints();
     let trianglesArea = 0;
     
@@ -39,7 +38,6 @@ export class PyramidService {
     
     const basePoints = pyramid.getBasePoints();
     
-    // Determine which part is sliced based on coordinate plane
     let effectiveHeight = 0;
     
     if (coordinatePlane === 'xy') {
@@ -81,20 +79,16 @@ export class PyramidService {
   }
 
   public isValidPyramid(pyramid: Pyramid): boolean {
-    // Check if base points form a valid quadrilateral
     const basePoints = pyramid.getBasePoints();
     
-    // Check if all base points are coplanar
     if (!this.arePointsCoplanar(basePoints)) {
       return false;
     }
     
-    // Check if apex is not on the base plane
     if (this.arePointsCoplanar([...basePoints, pyramid.apex])) {
       return false;
     }
     
-    // Check if base has non-zero area
     const baseArea = this.calculateBaseArea(pyramid);
     if (baseArea < EPSILON) {
       return false;
@@ -106,19 +100,14 @@ export class PyramidService {
   public baseLiesOnCoordinatePlane(pyramid: Pyramid): string | null {
     const basePoints = pyramid.getBasePoints();
     
-    // Check if all z-coordinates are the same (lies on xy-plane)
     const allSameZ = basePoints.every((p) => this.areEqual(p.z, basePoints[0].z));
     if (allSameZ && this.areEqual(basePoints[0].z, 0)) {
       return 'xy';
     }
-    
-    // Check if all y-coordinates are the same (lies on xz-plane)
     const allSameY = basePoints.every((p) => this.areEqual(p.y, basePoints[0].y));
     if (allSameY && this.areEqual(basePoints[0].y, 0)) {
       return 'xz';
     }
-    
-    // Check if all x-coordinates are the same (lies on yz-plane)
     const allSameX = basePoints.every((p) => this.areEqual(p.x, basePoints[0].x));
     if (allSameX && this.areEqual(basePoints[0].x, 0)) {
       return 'yz';
@@ -129,9 +118,6 @@ export class PyramidService {
 
   private calculateBaseArea(pyramid: Pyramid): number {
     const basePoints = pyramid.getBasePoints();
-    
-    // Using Shoelace formula for quadrilateral
-    // Assume points are in order
     let area = 0;
     for (let i = 0; i < basePoints.length; i++) {
       const j = (i + 1) % basePoints.length;
@@ -144,13 +130,9 @@ export class PyramidService {
 
   private calculateHeight(pyramid: Pyramid): number {
     const basePoints = pyramid.getBasePoints();
-    
-    // Calculate distance from apex to base plane
-    // First, find the plane equation of the base
     const normal = this.calculateNormal(basePoints[0], basePoints[1], basePoints[2]);
     const d = -(normal.x * basePoints[0].x + normal.y * basePoints[0].y + normal.z * basePoints[0].z);
     
-    // Distance from apex to plane
     const numerator = Math.abs(
       normal.x * pyramid.apex.x +
       normal.y * pyramid.apex.y +

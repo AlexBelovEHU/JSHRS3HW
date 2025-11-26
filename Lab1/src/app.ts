@@ -23,10 +23,8 @@ export class Application {
     try {
       logger.info('Application started');
 
-      // Process rectangles
       this.processRectangles();
 
-      // Process pyramids
       this.processPyramids();
 
       logger.info('Application finished successfully');
@@ -115,7 +113,6 @@ export class Application {
             const basePlane = this.pyramidService.baseLiesOnCoordinatePlane(shape);
             logger.info(`  Base lies on coordinate plane: ${basePlane !== null ? basePlane : 'none'}`);
 
-            // Calculate volume ratio after slicing
             const sliceDistance = 2;
             const ratio = this.pyramidService.calculateVolumeRatioAfterSlicing(shape, 'xy', sliceDistance);
             logger.info(`  Volume ratio after slicing at z=${sliceDistance}: ${ratio.toFixed(4)}`);
@@ -132,6 +129,5 @@ export class Application {
   }
 }
 
-// Run the application
 const app = new Application();
 app.run();

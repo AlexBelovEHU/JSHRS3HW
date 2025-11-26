@@ -5,8 +5,6 @@ import { EPSILON } from '../constants/defaults.js';
 export class RectangleService {
   public calculateArea(rectangle: Rectangle): number {
     const points = rectangle.getPoints();
-    
-    // Calculate side lengths
     const side1 = this.calculateDistance(points[0], points[1]);
     const side2 = this.calculateDistance(points[1], points[2]);
     
@@ -28,7 +26,6 @@ export class RectangleService {
   public isValidRectangle(rectangle: Rectangle): boolean {
     const points = rectangle.getPoints();
     
-    // Check if any three points are collinear
     if (this.areThreePointsCollinear(points[0], points[1], points[2])) {
       return false;
     }
@@ -42,22 +39,18 @@ export class RectangleService {
       return false;
     }
     
-    // Check if opposite sides are parallel and equal
     const side1 = this.calculateDistance(points[0], points[1]);
     const side2 = this.calculateDistance(points[1], points[2]);
     const side3 = this.calculateDistance(points[2], points[3]);
     const side4 = this.calculateDistance(points[3], points[0]);
     
-    // Opposite sides should be equal
     if (!this.areEqual(side1, side3) || !this.areEqual(side2, side4)) {
       return false;
     }
     
-    // Check if all angles are 90 degrees
     const diagonal1 = this.calculateDistance(points[0], points[2]);
     const diagonal2 = this.calculateDistance(points[1], points[3]);
     
-    // In a rectangle, diagonals should be equal
     return this.areEqual(diagonal1, diagonal2);
   }
 
@@ -118,7 +111,6 @@ export class RectangleService {
   public isTrapezoid(rectangle: Rectangle): boolean {
     const points = rectangle.getPoints();
     
-    // Check if at least one pair of opposite sides is parallel
     const isParallel01_23 = this.areParallel(points[0], points[1], points[2], points[3]);
     const isParallel12_30 = this.areParallel(points[1], points[2], points[3], points[0]);
     

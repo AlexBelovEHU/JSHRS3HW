@@ -6,7 +6,6 @@ import { PyramidService } from './services/PyramidService.js';
 
 console.log('=== Geometric Shapes Calculator Demo ===\n');
 
-// Rectangle demonstration
 console.log('--- Rectangle Example ---');
 const rect = new Rectangle(
   'RECT-1',
@@ -28,7 +27,6 @@ console.log('Is rhombus:', rectService.isRhombus(rect));
 console.log('Is trapezoid:', rectService.isTrapezoid(rect));
 console.log('Is convex:', rectService.isConvex(rect));
 
-// Square demonstration
 console.log('\n--- Square Example ---');
 const square = new Rectangle(
   'RECT-2',
@@ -44,7 +42,6 @@ console.log('Area:', rectService.calculateArea(square));
 console.log('Perimeter:', rectService.calculatePerimeter(square));
 console.log('Is square:', rectService.isSquare(square));
 
-// Pyramid demonstration
 console.log('\n--- Pyramid Example ---');
 const pyramid = new Pyramid(
   'PYR-1',

@@ -10,17 +10,13 @@ const projectRoot = join(currentDir, '..', '..');
 const logsDir = join(projectRoot, 'logs');
 const logFilePath = join(logsDir, 'app.log');
 
-// Ensure logs directory exists
 try {
   mkdirSync(logsDir, { recursive: true });
 } catch (error) {
-  // Directory already exists
 }
 
-// Create file stream for synchronous writing
 const logStream = createWriteStream(logFilePath, { flags: 'a' });
 
-// Create multistream logger
 export const logger = pino(
   {
     level: 'info',
