@@ -13,8 +13,8 @@ export class FileReader {
   private readonly pyramidFactory: ShapeFactory;
 
   constructor() {
-    this.rectangleFactory = new RectangleFactory();
-    this.pyramidFactory = new PyramidFactory();
+    this.rectangleFactory = RectangleFactory.getInstance();
+    this.pyramidFactory = PyramidFactory.getInstance();
   }
 
   public readShapesFromFile(fileName: string, shapeType: 'rectangle' | 'pyramid'): Shape[] {

@@ -5,7 +5,7 @@ describe('RectangleFactory', () => {
   let factory: RectangleFactory;
 
   beforeEach(() => {
-    factory = new RectangleFactory();
+    factory = RectangleFactory.getInstance();
   });
 
   describe('validateData', () => {

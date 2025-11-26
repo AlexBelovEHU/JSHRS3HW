@@ -4,11 +4,19 @@ import { Point } from '../entities/Point.js';
 import { PointValidator } from '../validators/PointValidator.js';
 
 export class RectangleFactory implements ShapeFactory {
+  private static instance: RectangleFactory | null = null;
   private static instanceCounter = 0;
   private readonly pointValidator: PointValidator;
 
-  constructor() {
+  private constructor() {
     this.pointValidator = new PointValidator();
+  }
+
+  public static getInstance(): RectangleFactory {
+    if (RectangleFactory.instance === null) {
+      RectangleFactory.instance = new RectangleFactory();
+    }
+    return RectangleFactory.instance;
   }
 
   public validateData(data: string[]): boolean {

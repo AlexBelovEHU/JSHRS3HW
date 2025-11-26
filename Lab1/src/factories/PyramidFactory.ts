@@ -4,11 +4,19 @@ import { Point } from '../entities/Point.js';
 import { PointValidator } from '../validators/PointValidator.js';
 
 export class PyramidFactory implements ShapeFactory {
+  private static instance: PyramidFactory | null = null;
   private static instanceCounter = 0;
   private readonly pointValidator: PointValidator;
 
-  constructor() {
+  private constructor() {
     this.pointValidator = new PointValidator();
+  }
+
+  public static getInstance(): PyramidFactory {
+    if (PyramidFactory.instance === null) {
+      PyramidFactory.instance = new PyramidFactory();
+    }
+    return PyramidFactory.instance;
   }
 
   public validateData(data: string[]): boolean {

@@ -12,11 +12,16 @@ export class Application {
   private readonly pyramidService: PyramidService;
   private readonly resultValidator: ResultValidator;
 
-  constructor() {
-    this.fileReader = new FileReader();
-    this.rectangleService = new RectangleService();
-    this.pyramidService = new PyramidService();
-    this.resultValidator = new ResultValidator();
+  constructor(
+    fileReader?: FileReader,
+    rectangleService?: RectangleService,
+    pyramidService?: PyramidService,
+    resultValidator?: ResultValidator,
+  ) {
+    this.fileReader = fileReader ?? new FileReader();
+    this.rectangleService = rectangleService ?? new RectangleService();
+    this.pyramidService = pyramidService ?? new PyramidService();
+    this.resultValidator = resultValidator ?? new ResultValidator();
   }
 
   public run(): void {
