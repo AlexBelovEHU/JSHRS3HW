@@ -1,4 +1,4 @@
-import { IShapeObserver } from '../observers/IShapeObserver.js';
+import type { IShapeObserver } from '../observers/IShapeObserver.js';
 
 export abstract class Shape {
   public readonly id: string;
