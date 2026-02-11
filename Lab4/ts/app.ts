@@ -42,7 +42,7 @@ class OnlineStore {
             this.products.push(product);
             this.renderProducts();
         } catch (error) {
-            console.error('Ошибка создания продукта из фабрики:', error);
+            console.error('pasasi bibu', error);
         }
     }
 
@@ -125,7 +125,7 @@ class OnlineStore {
                 this.renderProducts();
             }
         } catch (error) {
-            console.error('Ошибка загрузки продуктов из API:', error);
+            console.error('pasasi bibu:', error);
         }
     }
 
@@ -137,11 +137,11 @@ class OnlineStore {
     private renderProducts(): void {
         if (!this.productsGrid || !this.productCount) return;
         
-        this.productCount.textContent = `${this.products.length} товаров`;
+        this.productCount.textContent = `${this.products.length} pisek lmao`;
 
         if (this.products.length === 0) {
             this.productsGrid.innerHTML = `
-                <p class="empty-message">Нажмите кнопки слева для создания продуктов</p>
+                <p class="empty-message">Nichego net</p>
             `;
             return;
         }
@@ -155,7 +155,7 @@ class OnlineStore {
         
         let badges = '';
         if (product.hasDiscount) {
-            badges += '<span class="badge badge-discount">Скидка</span>';
+            badges += '<span class="badge badge-discount">Discount</span>';
         }
         if (product.isPremium) {
             badges += '<span class="badge badge-premium">Premium</span>';
@@ -167,7 +167,7 @@ class OnlineStore {
                 <div class="product-info">
                     <div class="product-category">${categoryName}</div>
                     <h3 class="product-name">${product.name}</h3>
-                    <p class="product-brand">${product.brand || 'Без бренда'}</p>
+                    <p class="product-brand">${product.brand || 'No brand'}</p>
                     <div class="product-meta">
                         <span class="product-price">${product.price.toLocaleString('ru-RU')}₽</span>
                         <span class="product-rating">⭐ ${product.rating}</span>
@@ -180,9 +180,9 @@ class OnlineStore {
 
     private getCategoryDisplayName(category: ProductCategory): string {
         const names: Record<ProductCategory, string> = {
-            electronics: 'Электроника',
-            clothing: 'Одежда',
-            food: 'Продукты питания'
+            electronics: 'Electronics',
+            clothing: 'Clothing',
+            food: 'Food'
         };
         return names[category] || category;
     }
