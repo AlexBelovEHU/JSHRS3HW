@@ -69,7 +69,6 @@ export interface CustomProductOptions {
 export interface ISortStrategy {
     sort(products: IProduct[]): IProduct[];
     getName(): string;
-    getDescription(): string;
 }
 
 export type SortStrategyName = 
@@ -85,8 +84,7 @@ export interface ISortContext {
     setStrategy(strategyName: SortStrategyName): this;
     executeSort(products: IProduct[]): IProduct[];
     getCurrentStrategyName(): string;
-    getCurrentStrategyDescription(): string;
-    getAvailableStrategies(): { name: string; description: string }[];
+    getAvailableStrategies(): { name: string }[];
 }
 
 

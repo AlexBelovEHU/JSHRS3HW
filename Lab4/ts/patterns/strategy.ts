@@ -2,7 +2,6 @@ import { IProduct, ISortStrategy, ISortContext, SortStrategyName, ProductCategor
 export abstract class SortStrategy implements ISortStrategy {
     abstract sort(products: IProduct[]): IProduct[];
     abstract getName(): string;
-    abstract getDescription(): string;
 }
 export class PriceAscendingStrategy extends SortStrategy {
     sort(products: IProduct[]): IProduct[] {
@@ -11,10 +10,6 @@ export class PriceAscendingStrategy extends SortStrategy {
 
     getName(): string {
         return 'price-asc';
-    }
-
-    getDescription(): string {
-        return 'Сортировка по цене (от дешёвых к дорогим)';
     }
 }
 export class PriceDescendingStrategy extends SortStrategy {
@@ -25,10 +20,6 @@ export class PriceDescendingStrategy extends SortStrategy {
     getName(): string {
         return 'price-desc';
     }
-
-    getDescription(): string {
-        return 'Сортировка по цене (от дорогих к дешёвым)';
-    }
 }
 export class NameStrategy extends SortStrategy {
     sort(products: IProduct[]): IProduct[] {
@@ -38,10 +29,6 @@ export class NameStrategy extends SortStrategy {
     getName(): string {
         return 'name';
     }
-
-    getDescription(): string {
-        return 'Сортировка по названию (А-Я)';
-    }
 }
 export class RatingStrategy extends SortStrategy {
     sort(products: IProduct[]): IProduct[] {
@@ -50,10 +37,6 @@ export class RatingStrategy extends SortStrategy {
 
     getName(): string {
         return 'rating';
-    }
-
-    getDescription(): string {
-        return 'Сортировка по рейтингу (лучшие сначала)';
     }
 }
 export class CategoryStrategy extends SortStrategy {
@@ -77,10 +60,6 @@ export class CategoryStrategy extends SortStrategy {
     getName(): string {
         return 'category';
     }
-
-    getDescription(): string {
-        return 'Сортировка по категории';
-    }
 }
 export class DiscountFirstStrategy extends SortStrategy {
     sort(products: IProduct[]): IProduct[] {
@@ -94,10 +73,6 @@ export class DiscountFirstStrategy extends SortStrategy {
     getName(): string {
         return 'discount';
     }
-
-    getDescription(): string {
-        return 'Сначала товары со скидкой';
-    }
 }
 export class PremiumFirstStrategy extends SortStrategy {
     sort(products: IProduct[]): IProduct[] {
@@ -110,10 +85,6 @@ export class PremiumFirstStrategy extends SortStrategy {
 
     getName(): string {
         return 'premium';
-    }
-
-    getDescription(): string {
-        return 'Сначала премиум товары';
     }
 }
 export class SortContext implements ISortContext {
@@ -150,14 +121,9 @@ export class SortContext implements ISortContext {
         return this.currentStrategy.getName();
     }
 
-    getCurrentStrategyDescription(): string {
-        return this.currentStrategy.getDescription();
-    }
-
-    getAvailableStrategies(): { name: string; description: string }[] {
+    getAvailableStrategies(): { name: string }[] {
         return (Object.keys(this.strategies) as SortStrategyName[]).map(key => ({
-            name: key,
-            description: this.strategies[key].getDescription()
+            name: key
         }));
     }
 }
