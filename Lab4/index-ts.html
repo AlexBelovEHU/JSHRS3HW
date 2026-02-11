@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="ru">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Online Store Patterns – Showcase</title>
+		<link rel="stylesheet" href="./styles.css" />
+	</head>
+	<body>
+		<header class="header">
+			<h1>Online Store – Design Patterns</h1>
+			<p>Abstract Factory · Builder · Strategy (TypeScript)</p>
+		</header>
+
+		<main class="main">
+			<aside class="sidebar">
+				<section class="controls">
+					<div class="pattern-label">Abstract Factory</div>
+					<h3>Create random product</h3>
+					<div class="factory-controls">
+						<button class="btn btn-primary" onclick="window.store.createFromFactory('electronics')">electronic</button>
+						<button class="btn btn-primary" onclick="window.store.createFromFactory('clothing')">clothing</button>
+						<button class="btn btn-primary" onclick="window.store.createFromFactory('food')">food</button>
+					</div>
+				</section>
+
+				<section class="controls">
+					<div class="pattern-label">Builder</div>
+					<h3>Build product manually</h3>
+					<div class="builder-form">
+						<input id="productName" class="input" placeholder="Name" />
+						<input id="productBrand" class="input" placeholder="Brand (optional)" />
+						<input id="productPrice" class="input" type="number" min="0" step="1" placeholder="Price" />
+						<select id="productCategory" class="input">
+							<option value="electronics">Electronics</option>
+							<option value="clothing">Clothing</option>
+							<option value="food">Food</option>
+						</select>
+						<input id="productRating" class="input" type="number" min="0" max="5" step="0.1" placeholder="Rating 0–5" />
+
+						<div class="checkbox-group">
+							<label><input id="productDiscount" type="checkbox" /> Discount</label>
+							<label><input id="productPremium" type="checkbox" /> Premium</label>
+						</div>
+
+						<button class="btn btn-success" onclick="window.store.createFromBuilder()">Add product</button>
+					</div>
+				</section>
+
+				<section class="controls">
+					<div class="pattern-label">Strategy</div>
+					<h3>Sorting</h3>
+					<div class="sort-controls">
+						<button class="btn btn-secondary" onclick="window.store.sortProducts('price-asc')">Price up</button>
+						<button class="btn btn-secondary" onclick="window.store.sortProducts('price-desc')">Price down</button>
+						<button class="btn btn-secondary" onclick="window.store.sortProducts('name')">Name</button>
+						<button class="btn btn-secondary" onclick="window.store.sortProducts('rating')">Rating</button>
+						<button class="btn btn-secondary" onclick="window.store.sortProducts('category')">Category</button>
+						<button class="btn btn-secondary" onclick="window.store.sortProducts('discount')">Discount first</button>
+						<button class="btn btn-secondary" onclick="window.store.sortProducts('premium')">Premium first</button>
+					</div>
+				</section>
+
+				<section class="controls">
+					<h3>Data</h3>
+					<div class="factory-controls">
+						<button class="btn btn-warning" onclick="window.store.loadFromApi()">API</button>
+						<button class="btn btn-danger" onclick="window.store.clearProducts()">Clean</button>
+					</div>
+				</section>
+			</aside>
+
+			<section class="products-section">
+				<div class="products-header">
+					<h2>Products</h2>
+					<div id="productCount" class="product-count">0 products</div>
+				</div>
+
+				<div id="productsGrid" class="products-grid"></div>
+			</section>
+		</main>
+
+		<script type="module" src="./dist/app.js"></script>
+	</body>
+	</html>
